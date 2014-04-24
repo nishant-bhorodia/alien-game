@@ -3,7 +3,7 @@ var aliens = [];
 var alienId = 0;
 
 function Alien(left, top, maxleft, maxtop) {
-    this.imageSrc = ['alien.png', 'alien1.png', 'alien3.png', 'asteroid.gif'];
+    this.imageSrc = ['assets/images/alien.png', 'assets/images/alien1.png', 'assets/images/alien3.png', 'assets/images/asteroid.gif'];
     this.maxleft = maxleft;
     this.maxtop = maxtop;
 
