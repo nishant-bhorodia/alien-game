@@ -1,4 +1,3 @@
-
 var aliens = [];
 var alienId = 0;
 
@@ -39,7 +38,7 @@ function Alien(left, top, maxleft, maxtop) {
 function createAliens() {
     var left = Math.random() * 900;
     var top1 = 0;
-    aliens.push(new Alien(left, top1, 500, 500));
+    aliens.push(new Alien(left, top1, window.innerWidth, window.innerHeight - 110));
     return false;
 }
 
