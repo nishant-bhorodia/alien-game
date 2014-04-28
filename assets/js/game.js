@@ -1,9 +1,10 @@
-
 var aliens = [];
 var alienId = 0;
+var score = 0;
+var total = 0;
 
 function Alien(left, top, maxleft, maxtop) {
-    this.imageSrc = ['assets/images/alien.png', 'assets/images/alien1.png', 'assets/images/alien3.png', 'assets/images/asteroid.gif'];
+    this.imageSrc = ['assets/images/alien2.png', 'assets/images/alien.png', 'assets/images/alien1.png', 'assets/images/alien3.png', 'assets/images/asteroid.gif'];
     this.maxleft = maxleft;
     this.maxtop = maxtop;
 
@@ -11,7 +12,7 @@ function Alien(left, top, maxleft, maxtop) {
     this.image.id = alienId;
     ++alienId;
 
-    this.image.setAttribute("onclick", "this.className = 'removeAlien';");
+    this.image.setAttribute("onclick", "this.className = 'removeAlien'; updateScore();");
     this.image.src = this.imageSrc[Math.floor(Math.random() * this.imageSrc.length)];
 
     this.image.style.height = "100px";
@@ -31,15 +32,14 @@ function Alien(left, top, maxleft, maxtop) {
             return false;
         }
     };
-
     document.body.appendChild(this.image);
-
 }
 
 function createAliens() {
     var left = Math.random() * 900;
     var top1 = 0;
-    aliens.push(new Alien(left, top1, 500, 500));
+    aliens.push(new Alien(left, top1, window.innerWidth, window.innerHeight - 110));
+    updateTotalAliens();
     return false;
 }
 
@@ -64,4 +64,12 @@ function removeAliens() {
         }
     }
     return false;
+}
+
+function updateTotalAliens() {
+    document.getElementById('total').innerHTML = ++total;
+}
+
+function updateScore() {
+    document.getElementById('score').innerHTML = ++score;
 }

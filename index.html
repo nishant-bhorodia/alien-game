@@ -6,17 +6,38 @@
                 width: 100%;
                 height:100%;
             }
+
+            #wrap{
+                border: black dashed;
+                background-color: white;
+                position: absolute;
+                float: left;
+                left: 10px;
+                width: 100px;
+                height: 100px;
+            }
+
+            #score, #total {
+                alignment-baseline: middle;
+                font-family: cursive;
+                font-size: 20px;
+                text-align: center;
+            }
         </style>
         <script src="assets/js/game.js"></script>
-        
+
         <script>
-            setInterval("createAliens()", 700);
+            setInterval("createAliens()", 900);
             setInterval("moveAliens()", 10);
         </script>
     </head>
     <body>
 
         <img class="image" />
+        <span id="wrap">
+            Hit: <span id ="score"></span><br/>
+            Total: <span id ="total"></span>
+        </span>
 
     </body>
 </html>
