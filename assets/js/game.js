@@ -2,7 +2,26 @@ var aliens = [];
 var alienId = 0;
 var score = 0;
 var total = 0;
-var imageSrc = ['assets/images/alien2.png', 'assets/images/alien.png', 'assets/images/alien1.png', 'assets/images/alien3.png', 'assets/images/asteroid.gif'];
+var imgArray = [];
+
+var imageSrc = [
+                'assets/images/alien2.png',
+                'assets/images/alien.png',
+                'assets/images/alien1.png',
+                'assets/images/alien3.png',
+                'assets/images/asteroid.gif'
+               ];
+
+
+
+function preload() {
+    for (i = 0; i < arguments.length; i++) {
+        imgArray[i] = new Image();
+        imgArray[i].src = arguments[i];
+    }
+}
+
+preload(imageSrc); // preload Images
 
 function Alien(left, top, maxleft, maxtop) {
 
@@ -21,8 +40,7 @@ function Alien(left, top, maxleft, maxtop) {
     this.image.style.top = top;
     this.image.style.left = left;
 
-    this.move = function () {
-        var x = parseInt(this.image.style.left);
+    this.move = function() {
         var y = parseInt(this.image.style.top);
         if (y <= this.maxtop) {
             y += 0.025 * this.image.height;
@@ -34,7 +52,7 @@ function Alien(left, top, maxleft, maxtop) {
         }
     };
 
-    this.removeAlien = function () {
+    this.removeAlien = function() {
         var alien = document.getElementById(this.image.id);
         var key = getAlienKey(this.image.id);
         aliens.splice(key, 1);
@@ -69,9 +87,9 @@ function updateScore() {
     document.getElementById('score').innerHTML = ++score;
 }
 
-function getAlienKey(id){
+function getAlienKey(id) {
     for (var key in aliens) {
-        if (aliens[key].image.id == id) {
+        if (aliens[key].image.id === id) {
             return key;
         }
     }
