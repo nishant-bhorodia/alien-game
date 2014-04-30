@@ -1,28 +1,20 @@
 var aliens = [];
 var alienId = 0;
+
 var score = 0;
 var total = 0;
+
 var timeLimit = 60;
+
 var imgArray = [];
 
 var imageSrc = [
-                'assets/images/alien2.png',
-                'assets/images/alien.png',
-                'assets/images/alien1.png',
-                'assets/images/alien3.png',
-                'assets/images/asteroid.gif'
-               ];
-
-
-
-function preload() {
-    for (i = 0; i < arguments.length; i++) {
-        imgArray[i] = new Image();
-        imgArray[i].src = arguments[i];
-    }
-}
-
-preload(imageSrc); // preload Images
+    'assets/images/alien2.png',
+    'assets/images/alien.png',
+    'assets/images/alien1.png',
+    'assets/images/alien3.png',
+    'assets/images/asteroid.gif'
+];
 
 function Alien(left, top, maxleft, maxtop) {
 
@@ -96,17 +88,27 @@ function getAlienKey(id) {
     }
 }
 
-function countdownTimer(){
-    document.getElementById('time').innerHTML = timeLimit --;
-    if(timeLimit === 0){
-        
+function preload() {
+    for (i = 0; i < arguments.length; i++) {
+        imgArray[i] = new Image();
+        imgArray[i].src = arguments[i];
+    }
+}
+
+function countdownTimer() {
+    document.getElementById('time').innerHTML = timeLimit--;
+    
+    if (timeLimit === 0) {
+
         clearInterval(createAlienHandle);
         clearInterval(moveAliensHandle);
         clearInterval(timerHandle);
-        
+
         alert("Time Up");
     }
 }
+
+preload(imageSrc); // preload Images
 
 var createAlienHandle = setInterval("createAliens()", 1000);
 var moveAliensHandle = setInterval("moveAliens()", 10);
