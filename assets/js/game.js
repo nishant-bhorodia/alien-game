@@ -2,6 +2,7 @@ var aliens = [];
 var alienId = 0;
 var score = 0;
 var total = 0;
+var timeLimit = 60;
 var imgArray = [];
 
 var imageSrc = [
@@ -94,3 +95,19 @@ function getAlienKey(id) {
         }
     }
 }
+
+function countdownTimer(){
+    document.getElementById('time').innerHTML = timeLimit --;
+    if(timeLimit === 0){
+        
+        clearInterval(createAlienHandle);
+        clearInterval(moveAliensHandle);
+        clearInterval(timerHandle);
+        
+        alert("Time Up");
+    }
+}
+
+var createAlienHandle = setInterval("createAliens()", 1000);
+var moveAliensHandle = setInterval("moveAliens()", 10);
+var timerHandle = setInterval("countdownTimer()", 1000);
